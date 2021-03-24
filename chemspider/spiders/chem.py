@@ -2,7 +2,7 @@ import scrapy
 import scrapy
 from scrapy.linkextractors import LinkExtractor
 from scrapy.spiders import CrawlSpider, Rule, Spider
-from scrapy.items import ChemspiderItem
+from chemspider.items import ChemspiderItem
 import re
 
 class ChemSpider(CrawlSpider):
@@ -16,7 +16,7 @@ class ChemSpider(CrawlSpider):
         
         chem = ChemspiderItem()
 
-        chem_id = response.url.split("/")[-1]
+        chem_id = response.url.split(".")[3]
 
         #ID
         chem["chem_id"] = chem_id
